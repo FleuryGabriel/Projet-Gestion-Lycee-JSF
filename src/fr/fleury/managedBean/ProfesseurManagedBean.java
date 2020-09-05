@@ -1,6 +1,7 @@
 package fr.fleury.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,6 +17,7 @@ public class ProfesseurManagedBean implements Serializable{
 	//Attributs
 	
 	private Professeur professeur;
+	private List<Professeur> professeurs;
 	
 	//UML vers Java
 	
@@ -25,6 +27,7 @@ public class ProfesseurManagedBean implements Serializable{
 	//Constructeur
 	public ProfesseurManagedBean() {
 		this.professeur=new Professeur();
+		this.professeurs=pService.getallProfesseurs();
 	}
 
 	
@@ -37,6 +40,16 @@ public class ProfesseurManagedBean implements Serializable{
 
 	public void setProfesseur(Professeur professeur) {
 		this.professeur = professeur;
+	}
+
+
+	public List<Professeur> getProfesseurs() {
+		return professeurs;
+	}
+
+
+	public void setProfesseurs(List<Professeur> professeurs) {
+		this.professeurs = professeurs;
 	}
 	
 	

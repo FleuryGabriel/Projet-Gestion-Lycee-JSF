@@ -1,5 +1,7 @@
 package fr.fleury.services;
 
+import java.util.List;
+
 import fr.fleury.dao.EtudiantDaoImpl;
 import fr.fleury.dao.IEtudiantDao;
 import fr.fleury.entity.Departement;
@@ -28,6 +30,16 @@ public class EtudiantServiceImpl implements IEtudiantService{
 	@Override
 	public int affDeptEtudiant(Etudiant eIn, Departement dIn) {
 		return eDao.affecterdeptEtudiant(eIn, dIn);
+	}
+
+	@Override
+	public List<Etudiant> getAllEtudiant() {
+		return eDao.getAllEtudiant();
+	}
+
+	@Override
+	public Etudiant getEtudiantById(int eId) {
+		return eDao.getEtudiantById(eId);
 	}
 
 }

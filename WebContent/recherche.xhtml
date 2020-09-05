@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page de recherche</title>
+</h:head>
+
+<h:body>
+
+	<ui:include src="./template/header.xhtml"></ui:include>
+
+	<h1>Page de recherche</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="Recherche par référence : " />
+				<p:inputText value="#{eMB.etudiant.id}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Rechercher un élève" action="#{eMB.rechRef}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+	
+	
+	<h:form>
+		<p:dataTable var="e" value="#{eMB.etudiant}" rendered="#{eMB.affichageEt}">
+			<p:column headerText="id">
+				<h:outputText value="#{e.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{e.nom}" />
+			</p:column>
+			<p:column headerText="Prenom">
+				<h:outputText value="#{e.prenom}" />
+			</p:column>
+			<p:column headerText="Departement">
+				<h:outputText value="#{e.departement.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+</h:body>
+
+
+
+</html>

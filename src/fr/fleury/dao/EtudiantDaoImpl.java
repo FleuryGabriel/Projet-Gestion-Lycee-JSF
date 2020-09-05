@@ -13,6 +13,10 @@ import fr.fleury.util.Connecteur;
 public class EtudiantDaoImpl implements IEtudiantDao {
 
 	private PreparedStatement ps = null;
+	
+	//Lien UML
+	
+	IDepartementDao dDao = new DepartementDaoImpl();
 
 	@Override
 	public int addEtudiant(Etudiant eIn) {
@@ -186,7 +190,7 @@ public class EtudiantDaoImpl implements IEtudiantDao {
 				eOut.setId(rs.getInt("id"));
 				eOut.setNom(rs.getString("nom"));
 				eOut.setPrenom(rs.getString("prenom"));
-				eOut.setDepartement(new Departement(rs.getInt("id_dept")));
+				eOut.setDepartement(dDao.findDepartementById(rs.getInt("id_dept")));
 				
 				etudiants.add(eOut);
 			}
@@ -213,6 +217,51 @@ public class EtudiantDaoImpl implements IEtudiantDao {
 			}
 		}
 
+		return null;
+	}
+
+	@Override
+	public Etudiant getEtudiantById(int eId) {
+
+		try {
+			Connecteur.ouvrirConnexion();
+			
+			String request = "SELECT * FROM etudiant WHERE id=?;";
+			ps=Connecteur.getCx().prepareStatement(request);
+			ps.setInt(1, eId);
+			
+			ResultSet rs = ps.executeQuery();
+			Etudiant eOut = new Etudiant();
+			rs.next();
+			
+			eOut.setId(rs.getInt("id"));
+			eOut.setNom(rs.getString("nom"));
+			eOut.setPrenom(rs.getString("prenom"));
+			eOut.setDepartement(dDao.findDepartementById(rs.getInt("id_dept")));
+			
+			return eOut;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			
+			try {
+
+				if (ps != null) {
+					ps.close();
+				}
+
+				if (Connecteur.getCx() != null) {
+					Connecteur.getCx().close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+		
 		return null;
 	}
 

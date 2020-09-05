@@ -1,5 +1,7 @@
 package fr.fleury.services;
 
+import java.util.List;
+
 import fr.fleury.dao.IProfesseurDao;
 import fr.fleury.dao.ProfesseurDaoImpl;
 import fr.fleury.entity.Departement;
@@ -33,6 +35,16 @@ public class ProfesseurServiceImpl implements IProfesseurService{
 	@Override
 	public int affecterMatProfesseur(Professeur pIn, Matiere mIn) {
 		return pDao.affecterMatProfesseur(pIn, mIn);
+	}
+
+	@Override
+	public List<Professeur> getallProfesseurs() {
+		return pDao.getAllProfesseur();
+	}
+
+	@Override
+	public Professeur getProfesseurById(int pId) {
+		return pDao.getProfById(pId);
 	}
 
 }

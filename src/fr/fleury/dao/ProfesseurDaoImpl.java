@@ -14,6 +14,9 @@ import fr.fleury.util.Connecteur;
 public class ProfesseurDaoImpl implements IProfesseurDao{
 	
 	private PreparedStatement ps = null;
+	
+	IDepartementDao dDao = new DepartementDaoImpl();
+	IMatiereDao mDao = new MatiereDaoImpl();
 
 	@Override
 	public int addProfesseur(Professeur pIn) {
@@ -228,8 +231,8 @@ public class ProfesseurDaoImpl implements IProfesseurDao{
 				pOut.setNom(rs.getString("nom"));
 				pOut.setPrenom(rs.getString("prenom"));
 				pOut.setDate_aff(rs.getDate("date_aff"));
-				pOut.setDepartement(new Departement(rs.getInt("id_dep")));
-				pOut.setMatiere(new Matiere(rs.getInt("id_matiere")));
+				pOut.setDepartement(dDao.findDepartementById(rs.getInt("id_dep")));
+				pOut.setMatiere(mDao.getMatiereById(rs.getInt("id_matiere")));
 				
 				profs.add(pOut);
 			}
@@ -257,6 +260,51 @@ public class ProfesseurDaoImpl implements IProfesseurDao{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public Professeur getProfById(int pId) {
+		try {
+			Connecteur.ouvrirConnexion();
+
+			String request = "SELECT * FROM professeur WHERE id=?;";
+			ps = Connecteur.getCx().prepareStatement(request);
+			ps.setInt(1, pId);
+
+			ResultSet rs = ps.executeQuery();
+			Professeur pOut = new Professeur();
+			rs.next();
+
+			pOut.setId(rs.getInt("id"));
+			pOut.setNom(rs.getString("nom"));
+			pOut.setNom(rs.getString("prenom"));
+			pOut.setDate_aff(rs.getDate("date_aff"));
+			pOut.setDepartement(dDao.findDepartementById(rs.getInt("id_dep")));
+			pOut.setMatiere(mDao.getMatiereById(rs.getInt("id_matiere")));
+
+			return pOut;
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+
+				if (Connecteur.getCx() != null) {
+					Connecteur.getCx().close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+
 	}
 
 }

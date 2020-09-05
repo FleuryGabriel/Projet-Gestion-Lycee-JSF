@@ -19,5 +19,7 @@ public interface IProfesseurDao {
 	public int affecterMatProfesseur(Professeur pIn, Matiere mIn);
 	
 	public List<Professeur> getAllProfesseur();
+	
+	public Professeur getProfById(int pId);
 
 }

@@ -14,6 +14,8 @@ public interface IDepartementDao {
 	
 	public List<Departement> getAllDepartement();
 	
+	public Departement findDepartementById(int dId);
+	
 	
 	
 }

@@ -13,5 +13,7 @@ public interface IMatiereDao {
 	public int modMatiere(Matiere mIn);
 	
 	public List<Matiere> getAllMatiere();
+	
+	public Matiere getMatiereById(int mId);
 
 }

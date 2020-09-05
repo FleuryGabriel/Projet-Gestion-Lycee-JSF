@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page d'accueil</title>
+</h:head>
+
+<h:body>
+
+	<ui:include src="./template/header.xhtml"></ui:include>
+
+	<h1 style="text-align: center; color: gray; border-bottom:thick ;">Liste
+		des Etudiants</h1>
+
+	<h:form>
+		<p:dataTable var="e" value="#{eMB.etudiants}">
+			<p:column headerText="ID">
+				<h:outputText value="#{e.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{e.nom}" />
+			</p:column>
+			<p:column headerText="Prénom">
+				<h:outputText value="#{e.prenom}" />
+			</p:column>
+			<p:column headerText="Département">
+				<h:outputText value="#{e.departement.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thin;">Liste
+		des Professeurs</h1>
+
+	<h:form>
+		<p:dataTable var="p" value="#{pMB.professeurs}">
+			<p:column headerText="ID">
+				<h:outputText value="#{p.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{p.nom}" />
+			</p:column>
+			<p:column headerText="Prénom">
+				<h:outputText value="#{p.prenom}" />
+			</p:column>
+			<p:column headerText="Département">
+				<h:outputText value="#{p.departement.nom}" />
+			</p:column>
+			<p:column headerText="Matière">
+				<h:outputText value="#{p.matiere.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thin;">Liste
+		des Départements</h1>
+
+	<h:form>
+		<p:dataTable var="d" value="#{dMB.departements}">
+			<p:column headerText="ID">
+				<h:outputText value="#{d.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{d.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thin;">Liste
+		des Matières</h1>
+
+	<h:form>
+		<p:dataTable var="m" value="#{mMB.matieres}">
+			<p:column headerText="ID">
+				<h:outputText value="#{m.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{m.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+</h:body>
+
+
+
+</html>

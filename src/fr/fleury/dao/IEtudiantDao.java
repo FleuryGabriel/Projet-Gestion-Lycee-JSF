@@ -17,4 +17,6 @@ public interface IEtudiantDao {
 	
 	public List<Etudiant> getAllEtudiant();
 	
+	public Etudiant getEtudiantById(int eId);
+	
 }

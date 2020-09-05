@@ -1,6 +1,7 @@
 package fr.fleury.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,6 +17,7 @@ public class MatiereManagedBean implements Serializable{
 	//Attributs
 	
 	private Matiere matiere;
+	private List<Matiere> matieres;
 	
 	//UML vers Java
 	
@@ -24,6 +26,8 @@ public class MatiereManagedBean implements Serializable{
 	//Constructeur
 	public MatiereManagedBean() {
 		this.matiere=new Matiere();
+		this.matieres=mService.getallMatieres();
+
 	}
 
 	//Getter et setter
@@ -33,6 +37,14 @@ public class MatiereManagedBean implements Serializable{
 
 	public void setMatiere(Matiere matiere) {
 		this.matiere = matiere;
+	}
+
+	public List<Matiere> getMatieres() {
+		return matieres;
+	}
+
+	public void setMatieres(List<Matiere> matieres) {
+		this.matieres = matieres;
 	}
 	
 	

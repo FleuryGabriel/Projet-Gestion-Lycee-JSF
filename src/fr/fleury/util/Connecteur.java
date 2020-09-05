@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Connecteur {
 	
 	//Les paramètres de connexion à la BD
-	public static final String url = "jdbc:mysql://localhost:3306/projet_gestion_lycee_jdbc";
+	public static final String url = "jdbc:mysql://localhost:3306/projet_gestion_lycee_jsf";
 	public static final String user = "root";
 	public static final String password = "root";
 	public static final String driver = "com.mysql.jdbc.Driver";

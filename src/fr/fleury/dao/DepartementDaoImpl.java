@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import fr.fleury.entity.Departement;
+import fr.fleury.entity.Etudiant;
 import fr.fleury.util.Connecteur;
 
 public class DepartementDaoImpl implements IDepartementDao {
@@ -185,6 +186,46 @@ public class DepartementDaoImpl implements IDepartementDao {
 
 		
 		return null;
+	}
+
+	@Override
+	public Departement findDepartementById(int dId) {
+		try {
+			Connecteur.ouvrirConnexion();
+			
+			String request = "SELECT * FROM departement WHERE id=?;";
+			ps=Connecteur.getCx().prepareStatement(request);
+			ps.setInt(1, dId);
+			
+			ResultSet rs = ps.executeQuery();
+			Departement dOut = new Departement();
+			rs.next();
+			
+			dOut.setId(rs.getInt("id"));
+			dOut.setNom(rs.getString("nom"));
+						
+			return dOut;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			
+			try {
+
+				if (ps != null) {
+					ps.close();
+				}
+
+				if (Connecteur.getCx() != null) {
+					Connecteur.getCx().close();
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}		return null;
 	}
 
 }

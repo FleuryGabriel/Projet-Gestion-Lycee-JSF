@@ -12,7 +12,7 @@
 
 	<ui:include src="./template/header.xhtml"></ui:include>
 
-	<h1 style="text-align: center; color: gray; border-bottom:thick ;">Liste
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Liste
 		des Etudiants</h1>
 
 	<h:form>
@@ -28,6 +28,10 @@
 			</p:column>
 			<p:column headerText="Département">
 				<h:outputText value="#{e.departement.nom}" />
+			</p:column>
+			<p:column>
+				<h:commandButton value="Modifier" />
+				<h:commandButton value="Supprimer" />
 			</p:column>
 		</p:dataTable>
 	</h:form>
@@ -52,6 +56,10 @@
 			<p:column headerText="Matière">
 				<h:outputText value="#{p.matiere.nom}" />
 			</p:column>
+			<p:column>
+				<h:commandButton value="Modifier" />
+				<h:commandButton value="Supprimer" />
+			</p:column>
 		</p:dataTable>
 	</h:form>
 
@@ -66,6 +74,10 @@
 			<p:column headerText="Nom">
 				<h:outputText value="#{d.nom}" />
 			</p:column>
+			<p:column>
+				<h:commandButton value="Modifier" />
+				<h:commandButton value="Supprimer" />
+			</p:column>
 		</p:dataTable>
 	</h:form>
 
@@ -79,6 +91,10 @@
 			</p:column>
 			<p:column headerText="Nom">
 				<h:outputText value="#{m.nom}" />
+			</p:column>
+			<p:column>
+				<h:commandButton value="Modifier" />
+				<h:commandButton value="Supprimer" />
 			</p:column>
 		</p:dataTable>
 	</h:form>

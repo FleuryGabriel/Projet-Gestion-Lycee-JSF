@@ -30,8 +30,13 @@
 				<h:outputText value="#{e.departement.nom}" />
 			</p:column>
 			<p:column>
-				<h:commandButton value="Modifier" />
-				<h:commandButton value="Supprimer" />
+				<h:commandButton value="Modifier" action="#{eMB.redirectModif}">
+					<f:setPropertyActionListener value="#{e}" target="#{eMB.etudiant}" />
+				</h:commandButton>
+				<h:commandButton value="Supprimer" action="#{eMB.suprEt}">
+					<f:setPropertyActionListener value="#{e.id}"
+						target="#{eMB.etudiant.id}" />
+				</h:commandButton>
 			</p:column>
 		</p:dataTable>
 	</h:form>
@@ -56,9 +61,18 @@
 			<p:column headerText="Matière">
 				<h:outputText value="#{p.matiere.nom}" />
 			</p:column>
+			<p:column headerText="Date d'affectation">
+				<h:outputText value="#{p.date_aff}" />
+			</p:column>
 			<p:column>
-				<h:commandButton value="Modifier" />
-				<h:commandButton value="Supprimer" />
+				<h:commandButton value="Modifier" action="#{pMB.redirectModif}">
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pMB.professeur}" />
+				</h:commandButton>
+				<h:commandButton value="Supprimer" action="#{pMB.supprimer}">
+					<f:setPropertyActionListener value="#{p.id}"
+						target="#{pMB.professeur.id}" />
+				</h:commandButton>
 			</p:column>
 		</p:dataTable>
 	</h:form>
@@ -75,8 +89,14 @@
 				<h:outputText value="#{d.nom}" />
 			</p:column>
 			<p:column>
-				<h:commandButton value="Modifier" />
-				<h:commandButton value="Supprimer" />
+				<h:commandButton value="Modifier" action="#{dMB.redirectModif}">
+					<f:setPropertyActionListener value="#{d}"
+						target="#{dMB.departement}" />
+				</h:commandButton>
+				<h:commandButton value="Supprimer" action="#{dMB.supprimer}">
+					<f:setPropertyActionListener value="#{d.id}"
+						target="#{dMB.departement.id}" />
+				</h:commandButton>
 			</p:column>
 		</p:dataTable>
 	</h:form>
@@ -93,8 +113,14 @@
 				<h:outputText value="#{m.nom}" />
 			</p:column>
 			<p:column>
-				<h:commandButton value="Modifier" />
-				<h:commandButton value="Supprimer" />
+				<h:commandButton value="Modifier" action="#{mMB.redirectModif}">
+					<f:setPropertyActionListener value="#{m}"
+						target="#{mMB.matiere}" />
+				</h:commandButton>
+				<h:commandButton value="Supprimer" action="#{mMB.supprimer}">
+					<f:setPropertyActionListener value="#{m.id}"
+						target="#{mMB.matiere.id}" />
+				</h:commandButton>
 			</p:column>
 		</p:dataTable>
 	</h:form>

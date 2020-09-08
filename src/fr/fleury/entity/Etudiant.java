@@ -63,18 +63,7 @@ public class Etudiant {
 		this.departement = departement;
 	}
 
-	//toString
-	@Override
-	public String toString() {
-		
-		if(departement.getNom() != null) {
-			return "Etudiant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", département=" + departement.getNom() + "]";
-		}else {
-			return "Etudiant [id=" + id + ", nom=" + nom + ", prenom=" + prenom+ "]";
-		}
-		
-		
-	}
+
 
 	
 

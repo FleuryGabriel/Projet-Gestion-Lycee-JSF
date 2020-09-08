@@ -51,11 +51,7 @@ public class Matiere {
 	}
 
 
-	//toString
-	@Override
-	public String toString() {
-		return "Matiere [id=" + id + ", nom=" + nom + "]";
-	}
+
 	
 	
 

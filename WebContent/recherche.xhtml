@@ -12,7 +12,7 @@
 
 	<ui:include src="./template/header.xhtml"></ui:include>
 
-	<h1>Page de recherche</h1>
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Rechercher un étudiant</h1>
 
 	<h:form>
 		<div class="ui-fluid p-formgrid p-grid">
@@ -42,6 +42,88 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
+	
+		<h1 style="text-align: center; color: gray; border-bottom: thick;">Rechercher un professeur</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="Recherche par référence : " />
+				<p:inputText value="#{pMB.professeur.id}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Rechercher un professeur" action="#{pMB.rechercher}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+	<h:form>
+		<p:dataTable var="p" value="#{pMB.professeur}" rendered="#{pMB.affichage}">
+			<p:column headerText="ID">
+				<h:outputText value="#{p.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{p.nom}" />
+			</p:column>
+			<p:column headerText="Prénom">
+				<h:outputText value="#{p.prenom}" />
+			</p:column>
+			<p:column headerText="Département">
+				<h:outputText value="#{p.departement.nom}" />
+			</p:column>
+			<p:column headerText="Matière">
+				<h:outputText value="#{p.matiere.nom}" />
+			</p:column>
+			<p:column headerText="Date d'affectation">
+				<h:outputText value="#{p.date_aff}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+<h1 style="text-align: center; color: gray; border-bottom: thick;">Rechercher un département</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="Recherche par référence : " />
+				<p:inputText value="#{dMB.departement.id}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Rechercher un département" action="#{dMB.rechercher}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+	<h:form>
+		<p:dataTable var="d" value="#{dMB.departement}" rendered="#{dMB.affichage}">
+			<p:column headerText="ID">
+				<h:outputText value="#{d.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{d.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	
+<h1 style="text-align: center; color: gray; border-bottom: thick;">Rechercher une matière</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="Recherche par référence : " />
+				<p:inputText value="#{mMB.matiere.id}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Rechercher une matière" action="#{mMB.rechercher}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+	<h:form>
+		<p:dataTable var="m" value="#{mMB.matiere}" rendered="#{mMB.affichage}">
+			<p:column headerText="ID">
+				<h:outputText value="#{m.id}" />
+			</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{m.nom}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
 
 
 </h:body>

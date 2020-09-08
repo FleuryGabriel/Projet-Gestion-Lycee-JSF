@@ -11,8 +11,90 @@
 <h:body>
 
 	<ui:include src="./template/header.xhtml"></ui:include>
-	
-	<h1>Page d'ajout</h1>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Formulaire
+		d'ajout d'étudiant</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="ID : " />
+				<p:inputText value="#{eMB.etudiant.id}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Nom : " />
+				<p:inputText value="#{eMB.etudiant.nom}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Prénom : " />
+				<p:inputText value="#{eMB.etudiant.prenom}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Ajouter l'étudiant" action="#{eMB.ajouter}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Formulaire
+		d'ajout de professeur</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="ID : " />
+				<p:inputText value="#{pMB.professeur.id}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Nom : " />
+				<p:inputText value="#{pMB.professeur.nom}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Prénom : " />
+				<p:inputText value="#{pMB.professeur.prenom}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Date d'affectation : " />
+				<p:inputText value="#{pMB.professeur.date_aff}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Ajouter le professeur" action="#{pMB.ajouter}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Formulaire
+		d'ajout de département</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="ID : " />
+				<p:inputText value="#{dMB.departement.id}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Nom : " />
+				<p:inputText value="#{dMB.departement.nom}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Ajouter le département" action="#{mMB.ajouter}"
+			styleClass="ui-priority-primary" />
+	</h:form>
+
+	<h1 style="text-align: center; color: gray; border-bottom: thick;">Formulaire
+		d'ajout de matière</h1>
+
+	<h:form>
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
+				<p:outputLabel value="ID : " />
+				<p:inputText value="#{mMB.matiere.id}" required="true" />
+			</div>
+			<div class="p-field p-col">
+				<p:outputLabel value="Nom : " />
+				<p:inputText value="#{mMB.matiere.nom}" required="true" />
+			</div>
+		</div>
+		<h:commandButton value="Ajouter la matière" action="#{mMB.ajouter}"
+			styleClass="ui-priority-primary" />
+	</h:form>
 
 </h:body>
 

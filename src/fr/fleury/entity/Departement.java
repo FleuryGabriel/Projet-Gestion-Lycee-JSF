@@ -51,10 +51,7 @@ public class Departement {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "Departement [id=" + id + ", nom=" + nom + "]";
-	}
+
 
 	
 }

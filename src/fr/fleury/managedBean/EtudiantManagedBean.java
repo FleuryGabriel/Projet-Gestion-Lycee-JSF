@@ -82,6 +82,47 @@ public class EtudiantManagedBean implements Serializable{
 		return "recherche";
 	}
 	
+	public String suprEt() {
+		int verif = eService.delEtudiant(this.etudiant.getId());
+		
+		if(verif==1) {
+			this.etudiants=eService.getAllEtudiant();
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur de suppression"));
+			this.etudiants=eService.getAllEtudiant();
+		}
+		
+		return "accueil";
+	}
+	
+	public String ajouter() {
+		int verif = eService.addEtudiant(this.etudiant);
+		
+		if(verif==1) {
+			this.etudiants=eService.getAllEtudiant();
+			return "accueil";
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur lors de l'ajout"));
+			return "ajout";
+		}
+	}
+	
+	public String modifier() {
+		int verif = eService.modEtudiant(etudiant);
+		
+		if(verif==1) {
+			this.etudiants=eService.getAllEtudiant();
+			return "accueil";
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur lors de la modification"));
+			return "modif";
+		}
+	}
+	
+	public String redirectModif() {
+		return "modif";
+	}
+	
 	
 
 }
